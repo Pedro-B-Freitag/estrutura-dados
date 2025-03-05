@@ -64,6 +64,7 @@ public class ListaEstatica<T> {
 
     }
 
+    @SuppressWarnings("unchecked")
     public T obterElemento(int posicao) {
         if (posicao < 0 || posicao >= tamanho) {
             throw new IndexOutOfBoundsException("Posição inválida.");
@@ -96,7 +97,7 @@ public class ListaEstatica<T> {
         for(int i = 0; i < tamanho/2; i++){
             Object temp = info[i];
             info[i] = info[tamanho - i - 1];
-            info[tamanho-i - 1] = temp; 
+            info[tamanho - i - 1] = temp; 
         }
     }
 }
