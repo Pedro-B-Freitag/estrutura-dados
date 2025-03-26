@@ -81,6 +81,25 @@ public class ListaEstatica<T> {
         return tamanho;
     }
 
+    public void retirarElementos(int inicio, int fim){
+        int diferenca = fim - inicio;
+        if(fim < tamanho && inicio > -1 && inicio < tamanho){
+            for(int i = inicio; i <= fim; i++){
+               info[i] = null;
+               tamanho --; 
+            }
+            for(int i = inicio; i <= fim; i++){
+                if(info[i + diferenca + 1] != null){
+                    info[i] = info[i + diferenca + 1];
+                }
+            }
+        }else{
+            throw new IndexOutOfBoundsException("Índice fornecido não se encontra no vetor");
+        }
+        
+    }
+
+
     @Override
     public String toString() {
         String resultado = "";
