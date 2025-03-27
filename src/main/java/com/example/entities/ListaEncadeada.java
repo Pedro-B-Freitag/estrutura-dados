@@ -101,6 +101,16 @@ public class ListaEncadeada<T> {
         }
     }
 
+    public void liberar(){
+        NoLista<T> p = primeiro;
+        while (p != null) {
+            NoLista<T> proximo = p.getProximo();
+            p.setProximo(null);
+            p = proximo;
+        }
+        primeiro = null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

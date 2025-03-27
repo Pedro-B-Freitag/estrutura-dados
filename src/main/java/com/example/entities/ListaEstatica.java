@@ -81,6 +81,7 @@ public class ListaEstatica<T> {
         return tamanho;
     }
 
+
     public void retirarElementos(int inicio, int fim){
         int diferenca = fim - inicio;
         if(fim < tamanho && inicio > -1 && inicio < tamanho){
