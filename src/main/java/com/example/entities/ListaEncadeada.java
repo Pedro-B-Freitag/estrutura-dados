@@ -3,6 +3,7 @@ package com.example.entities;
 public class ListaEncadeada<T> {
     
     private NoLista<T> primeiro;
+    private NoLista<T> ultimo;
 
     public ListaEncadeada(){
         this.primeiro = null;
@@ -14,8 +15,24 @@ public class ListaEncadeada<T> {
 
     public void inserir(T valor){
         NoLista<T> no = new NoLista<>(valor);
+        no.setInfo(valor);
         no.setProximo(primeiro);
+        if(estaVazia()){
+            ultimo = no;
+        }
         primeiro = no;
+    }
+
+    public void inserirNoFinal(T valor){
+        NoLista<T> no = new NoLista<>(valor);
+        no.setInfo(valor);
+        no.setProximo(null);
+        if(estaVazia()){
+            primeiro = no;
+        }else{
+            ultimo.setProximo(no);
+        }
+        ultimo = no;
     }
 
     public boolean estaVazia(){
@@ -46,6 +63,9 @@ public class ListaEncadeada<T> {
                 this.primeiro = p.getProximo();
             }else{
                 anterior.setProximo(p.getProximo()); 
+            }
+            if(p == ultimo){
+                this.ultimo = anterior;
             }
         }
     }
