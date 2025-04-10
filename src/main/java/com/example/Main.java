@@ -1,31 +1,25 @@
 package com.example;
 
-import com.example.entities.ListaEncadeada;
-import com.example.entities.ListaEstatica;
+
+import com.example.entities.ArvoreBinaria;
+import com.example.entities.NoArvoreBinaria;
 
 public class Main {
     public static void main(String[] args) {
-            ListaEstatica<Integer> lista = new ListaEstatica<Integer>();
-            lista.inserir(10);
-            lista.inserir(20);
-            lista.inserir(30);
-            lista.inserir(40);
-            lista.inserir(50);
-            lista.inserir(60);
-            lista.inserir(10);
-            lista.inserir(10);
-            System.out.println(lista.toString());
-    
-            lista.retirarElementos(1, 7);
-            System.out.println(lista.toString());
-            System.out.println(lista.getTamanho());
-    
-    
-            ListaEncadeada<Integer> lista2 = new ListaEncadeada<>();
-            lista2.inserir(1);
-            lista2.inserir(2);
-            lista2.inserir(3);
-            lista2.anexar(lista);
-            System.out.println(lista2.toString());
+            ArvoreBinaria<Integer> arvore = new ArvoreBinaria<>();
+
+            NoArvoreBinaria<Integer> raiz = new NoArvoreBinaria<>(10);
+            NoArvoreBinaria<Integer> esquerda = new NoArvoreBinaria<>(5);
+            NoArvoreBinaria<Integer> direita = new NoArvoreBinaria<>(15);
+            NoArvoreBinaria<Integer> esquerdaEsquerda = new NoArvoreBinaria<>(3);
+
+            esquerda.setEsquerda(esquerdaEsquerda);
+            raiz.setEsquerda(esquerda);
+            raiz.setDireita(direita);
+
+            arvore.setRaiz(raiz);
+
+            System.out.println(arvore.contarNos());
+            
         }
     }
