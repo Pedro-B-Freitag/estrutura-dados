@@ -21,8 +21,9 @@ public class ArvoreBinaria<T> {
     private boolean pertence(NoArvoreBinaria<T> no, T info){
         if(no == null){
             return false;
+        }else{
+            return (no.getInfo() == info) || pertence(no.getEsquerda(), info) || pertence(no.getDireita(), info);
         }
-        return (no.getInfo() == info) || pertence(no.getEsquerda(), info) || pertence(no.getDireita(), info);
     }
 
     public String toString(){
@@ -35,8 +36,7 @@ public class ArvoreBinaria<T> {
             return "<>";
         }
 
-        return"<" + no.getInfo() + ">" + "<" + arvorePre(no.getEsquerda()) + ">" + "<" +arvorePre(no.getDireita()) + ">";
-        
+        return "<" + no.getInfo() + ">" + "<" + arvorePre(no.getEsquerda()) + ">" + "<" +arvorePre(no.getDireita()) + ">";
 
     }
 
