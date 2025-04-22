@@ -47,6 +47,7 @@ public class PilhaVetor<T> implements Pilha<T> {
     @Override
     public void liberar() {
         info= new Object[limite];
+        tamanho = 0;
     }
 
     @Override

@@ -144,7 +144,4 @@ public class ListaEncadeada<T> {
         }
         return sb.toString();
     }
-
-
-
 }

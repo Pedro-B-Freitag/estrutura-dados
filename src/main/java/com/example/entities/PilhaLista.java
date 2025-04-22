@@ -35,7 +35,11 @@ public class PilhaLista<T> implements Pilha<T> {
     }
     @Override
     public void liberar() {
-        lista.liberar();
+        lista = new ListaEncadeada<>();
     }
     
+    @Override
+    public String toString() {
+        return lista.toString();
+    }
 }

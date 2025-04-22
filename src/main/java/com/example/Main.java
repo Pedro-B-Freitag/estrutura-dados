@@ -38,5 +38,6 @@ public class Main {
         System.out.println(arvore);
         System.out.println(arvore.contarNos());
 
+
         }
     }
