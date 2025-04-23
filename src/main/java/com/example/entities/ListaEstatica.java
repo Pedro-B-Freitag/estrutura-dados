@@ -82,22 +82,23 @@ public class ListaEstatica<T> {
     }
 
 
-    public void retirarElementos(int inicio, int fim){
-        int diferenca = fim - inicio;
-        if(fim < tamanho && inicio > -1 && inicio < tamanho){
-            for(int i = inicio; i <= fim; i++){
-               info[i] = null;
-               tamanho --; 
-            }
-            for(int i = inicio; i <= fim; i++){
-                if(info[i + diferenca + 1] != null){
-                    info[i] = info[i + diferenca + 1];
-                }
-            }
-        }else{
-            throw new IndexOutOfBoundsException("Índice fornecido não se encontra no vetor");
+    public void retirarElementos(int inicio, int fim) {
+        if (inicio < 0 || fim >= tamanho || inicio > fim) {
+            throw new IndexOutOfBoundsException("Índices inválidos.");
         }
-        
+
+        // Deslocando os elementos após 'fim' para 'inicio'
+        for (int i = fim + 1; i < tamanho; i++) {
+            info[inicio++] = info[i];
+        }
+
+        // Atualizando o tamanho da lista
+        tamanho -= (fim - inicio + 1);
+
+        // Preenchendo os espaços vazios com null (opcional)
+        for (int i = tamanho; i < info.length; i++) {
+            info[i] = null;
+        }
     }
 
 
