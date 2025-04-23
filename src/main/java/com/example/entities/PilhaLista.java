@@ -1,5 +1,6 @@
 package com.example.entities;
 
+import com.example.exceptions.PilhaVaziaException;
 import com.example.interfaces.Pilha;
 
 public class PilhaLista<T> implements Pilha<T> {
@@ -25,7 +26,7 @@ public class PilhaLista<T> implements Pilha<T> {
     @Override
     public T peek() {
         if(lista.estaVazia()){
-            throw new RuntimeException("Lista está vazia!");
+            throw new PilhaVaziaException();
         }
         return lista.getPrimeiro().getInfo();
     }

@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import com.example.exceptions.PilhaCheiaException;
+import com.example.exceptions.PilhaVaziaException;
 import com.example.interfaces.Pilha;
 
 public class PilhaVetor<T> implements Pilha<T> {
@@ -19,7 +21,7 @@ public class PilhaVetor<T> implements Pilha<T> {
             info[tamanho] = v;
             tamanho ++;
         }else{
-            throw new RuntimeException("Capacidade esgotada da pilha");
+            throw new PilhaCheiaException();
         }
     }
 
@@ -34,7 +36,7 @@ public class PilhaVetor<T> implements Pilha<T> {
     @Override
     public T peek() {
         if(estaVazia()){
-            throw new RuntimeException("Pilha está vazia!");
+            throw new PilhaVaziaException();
         }
         return (T) info[tamanho - 1];
     }
@@ -69,7 +71,7 @@ public class PilhaVetor<T> implements Pilha<T> {
             }
 
         } else{
-            throw new RuntimeException("Capacidade esgotada da pilha");
+            throw new PilhaCheiaException();
         }
         
     }
