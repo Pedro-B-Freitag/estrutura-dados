@@ -70,5 +70,26 @@ public class Arvore<T> {
         return 1 + contarNos(no.getPrimeiro()) + contarNos(no.getProximo());
     }
 
+    public int obterNivel(T info) {
+        return obterNivel(raiz, info, 0);
+    }
+
+    private int obterNivel(NoArvore<T> no, T info, int nivel) {
+        if (no == null) return -1;
+
+        if (no.getInfo().equals(info)) {
+            return nivel;
+        }
+
+        NoArvore<T> filho = no.getPrimeiro();
+        while (filho != null) {
+            int res = obterNivel(filho, info, nivel + 1);
+            if (res != -1) return res;
+            filho = filho.getProximo();
+        }
+
+        return -1;
+    }
+
 
 }

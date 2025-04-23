@@ -52,4 +52,21 @@ public class ArvoreBinaria<T> {
         return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
     }
 
+    public void removerFolhas() {
+        raiz = removerFolhas(raiz);
+    }
+
+    private NoArvoreBinaria<T> removerFolhas(NoArvoreBinaria<T> no) {
+        if (no == null) return null;
+
+        if (no.getEsquerda() == null && no.getDireita() == null) {
+            return null; // Remove a folha
+        }
+
+        no.setEsquerda(removerFolhas(no.getEsquerda()));
+        no.setDireita(removerFolhas(no.getDireita()));
+
+        return no;
+    }
+
 }
