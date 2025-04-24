@@ -52,21 +52,22 @@ public class ArvoreBinaria<T> {
         return 1 + contarNos(no.getEsquerda()) + contarNos(no.getDireita());
     }
 
-    public void removerFolhas() {
-        raiz = removerFolhas(raiz);
+    public int contarFolhas() {
+        if (raiz == null) return 0;
+
+        return contarFolhas(raiz);
     }
 
-    private NoArvoreBinaria<T> removerFolhas(NoArvoreBinaria<T> no) {
-        if (no == null) return null;
+    private int contarFolhas(NoArvoreBinaria<T> no) {
 
+        if(no == null){
+            return 0;
+        }
         if (no.getEsquerda() == null && no.getDireita() == null) {
-            return null; // Remove a folha
+            return 1;
         }
 
-        no.setEsquerda(removerFolhas(no.getEsquerda()));
-        no.setDireita(removerFolhas(no.getDireita()));
-
-        return no;
+        return contarFolhas(no.getEsquerda()) + contarFolhas(no.getDireita());
     }
 
 }

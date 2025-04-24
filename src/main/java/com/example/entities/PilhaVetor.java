@@ -11,6 +11,7 @@ public class PilhaVetor<T> implements Pilha<T> {
     private int limite;
 
     public PilhaVetor(int limite){
+        this.tamanho = 0;
         this.limite = limite;
         info= new Object[limite];
     }
@@ -18,10 +19,10 @@ public class PilhaVetor<T> implements Pilha<T> {
     @Override
     public void push(T v) {
         if(tamanho == limite){
+            throw new PilhaCheiaException();
+        }else{
             info[tamanho] = v;
             tamanho ++;
-        }else{
-            throw new PilhaCheiaException();
         }
     }
 
@@ -64,16 +65,14 @@ public class PilhaVetor<T> implements Pilha<T> {
         return resultado;
     }
 
-    public void concatenar(PilhaVetor p){
-        if(tamanho + p.getTamanho() <= limite){
-            for(int i = 0; i < p.getTamanho(); i++){
-                push((T) p.getInfo()[i]);
-            }
-
-        } else{
-            throw new PilhaCheiaException();
+    public void concatenar(PilhaVetor<T> p) {
+        if (this.tamanho + p.tamanho > this.limite) {
+            throw new RuntimeException("Nao ha espaco para empilhar todos os dados");
         }
-        
+
+        for (int i = 0; i < p.tamanho; i++) {
+            this.push((T) p.info[i]);
+        }
     }
 
     public Object[] getInfo() {

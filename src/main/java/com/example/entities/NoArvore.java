@@ -7,6 +7,8 @@ public class NoArvore<T> {
 
     public NoArvore(T info){
         this.info = info;
+        primeiro = null;
+        proximo = null;
     }
 
     public void inserirFilho(NoArvore<T> sa){

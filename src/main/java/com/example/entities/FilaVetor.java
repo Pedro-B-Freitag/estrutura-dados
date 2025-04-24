@@ -101,4 +101,17 @@ public class FilaVetor<T> implements Fila<T>{
         return limite;
     }    
     
+    public void encolher(){
+        if(inicio > 0){
+            int tamanhoAntigo = tamanho;
+            FilaVetor<T> fila = new FilaVetor<>(tamanho);
+            for(int i = 0; i < tamanhoAntigo; i++){
+                fila.info[i] = this.retirar();
+            }
+            inicio = 0;
+            limite = tamanhoAntigo;
+            tamanho = tamanhoAntigo;
+            this.info = fila.info;
+        }
+    }    
 }

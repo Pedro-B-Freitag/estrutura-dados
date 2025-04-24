@@ -4,6 +4,7 @@ public class Arvore<T> {
     private NoArvore<T> raiz;
 
     public Arvore(){
+        raiz = null;
     }
 
     public NoArvore<T> getRaiz() {
@@ -60,14 +61,26 @@ public class Arvore<T> {
     }
 
     public int contarNos(){
+        if(raiz == null){
+            return 0;
+        }
         return contarNos(raiz);
     }
 
     private int contarNos(NoArvore<T> no){
+        int qtde = 1;
+        NoArvore<T> p = no.getPrimeiro();
+        while(p != null){
+            qtde += contarNos(p);
+            p = p.getProximo();
+        }
+        return qtde;
+        /*
         if(no == null){
             return 0;
         }
         return 1 + contarNos(no.getPrimeiro()) + contarNos(no.getProximo());
+        */  
     }
 
     public int obterNivel(T info) {
@@ -91,5 +104,32 @@ public class Arvore<T> {
         return -1;
     }
 
+    
+    public int contarNosInternos(){
+        if(raiz == null){
+            return 0;
+        }
+        return contarNosInternos(raiz);
+    }
+    
+    
+    private int contarNosInternos(NoArvore<T> no) {
+        if (no == null) return 0;
+    
+        int count = 0;
+        if (no.getPrimeiro() != null) {
+            count = 1; 
+        }
+    
+        NoArvore<T> p = no.getPrimeiro();
+        while (p != null) {
+            count += contarNosInternos(p);
+            p = p.getProximo();
+        }
+    
+        return count;
+    }
 
+    
+    
 }

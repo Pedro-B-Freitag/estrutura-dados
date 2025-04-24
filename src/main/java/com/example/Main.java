@@ -1,11 +1,61 @@
 package com.example;
 
 import com.example.entities.Arvore;
+import com.example.entities.ArvoreBinaria;
+import com.example.entities.FilaVetor;
 import com.example.entities.NoArvore;
+import com.example.entities.NoArvoreBinaria;
 
 public class Main {
     public static void main(String[] args) {
 
+        
+
+        
+        
+        FilaVetor<Integer> fila = new FilaVetor<>(10);
+        
+        fila.inserir(0);
+        fila.inserir(0);
+        fila.inserir(0);
+        fila.retirar();
+        fila.retirar();
+        fila.retirar();
+
+        fila.inserir(1);
+        fila.inserir(2);
+        fila.inserir(3);
+        fila.inserir(4);
+        fila.inserir(1);
+        fila.inserir(2);
+        fila.inserir(3);
+        fila.inserir(4);
+        
+        System.out.println(fila);
+        fila.encolher();
+        System.out.println(fila);
+        
+        NoArvoreBinaria<Integer> nob4 = new NoArvoreBinaria<>(4);
+        
+        NoArvoreBinaria<Integer> nob10 = new NoArvoreBinaria<>(10);
+        NoArvoreBinaria<Integer> nob9 = new NoArvoreBinaria<>(9);
+        nob9.setEsquerda(nob10);
+
+        NoArvoreBinaria<Integer> nob8 = new NoArvoreBinaria<>(8);
+
+        NoArvoreBinaria<Integer> nob7 = new NoArvoreBinaria<>(7);
+        nob7.setEsquerda(nob9);
+        nob7.setDireita(nob8);
+
+
+        NoArvoreBinaria<Integer> nob1 = new NoArvoreBinaria<>(1);
+        nob1.setDireita(nob7);
+        nob1.setEsquerda(nob4);
+        ArvoreBinaria<Integer> arvoreB = new ArvoreBinaria<>();
+        arvoreB.setRaiz(nob1);
+        
+        System.out.println(arvoreB.contarFolhas());
+        
         NoArvore<Integer> no4 = new NoArvore<>(4);
         NoArvore<Integer> no3 = new NoArvore<>(3);
         no3.inserirFilho(no4);
@@ -36,8 +86,7 @@ public class Main {
         Arvore<Integer> arvore = new Arvore<>();
         arvore.setRaiz(no1);
         System.out.println(arvore);
-        System.out.println(arvore.contarNos());
-
-
+        System.out.println(arvore.contarNosInternos());
+        
         }
     }
