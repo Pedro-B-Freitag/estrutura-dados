@@ -1,6 +1,6 @@
 package com.example.entities;
 
-public class ArvoreBinaria<T> {
+public class    ArvoreBinaria<T> {
     
     NoArvoreBinaria<T> raiz;
 
