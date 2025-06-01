@@ -5,6 +5,9 @@ import com.example.entities.ArvoreBinaria;
 import com.example.entities.FilaVetor;
 import com.example.entities.NoArvore;
 import com.example.entities.NoArvoreBinaria;
+import com.example.ordenacao.OrdenacaoBolhaOtimizada;
+import com.example.ordenacao.OrdenacaoMergeSort;
+import com.example.ordenacao.OrdenacaoQuickSort;
 
 public class Main {
     public static void main(String[] args) {
@@ -87,6 +90,15 @@ public class Main {
         arvore.setRaiz(no1);
         System.out.println(arvore);
         System.out.println(arvore.contarNosInternos());
-        
+
+
+        Integer[] mergeLista = {2,145,32,1,56,9,6,4,8,0,54,342,67,86};
+        OrdenacaoQuickSort mergeSort = new OrdenacaoQuickSort();
+        mergeSort.setInfo(mergeLista);
+        mergeSort.ordenar();
+        for(int i = 0; i < mergeLista.length; i++){
+            System.out.print(mergeLista[i] + ",");
+        }
+
         }
     }
