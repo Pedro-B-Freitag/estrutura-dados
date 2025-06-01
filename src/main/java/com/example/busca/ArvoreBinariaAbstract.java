@@ -60,7 +60,6 @@ public abstract class ArvoreBinariaAbstract<T> {
 
     public abstract NoArvoreBinaria<T> buscar(T info);
 
-    //Métodos criados que nao estão no UML passado pelo professor
     public void inverter() {
         this.inverter(this.raiz);
     }
@@ -126,5 +125,27 @@ public abstract class ArvoreBinariaAbstract<T> {
             }
         }
         return idxFimEsquerda;
+    }
+
+    public int contarQtdeNos() {
+        return contaNos(raiz);
+    }
+
+    private int contaNos(NoArvoreBinaria no) {
+        int qtd = 0;
+        if (no != null) {
+            qtd += contaNos(no.getDireita());
+            qtd += contaNos(no.getEsquerda());
+            qtd++;
+        }
+        return qtd;
+    }
+
+    public int contarFilhos(NoArvoreBinaria no) {
+        return numeroFilhos(no);
+    }
+
+    private int numeroFilhos(NoArvoreBinaria no) {
+        return no == null ? 0 : 1 + contarFilhos(no.getEsquerda()) + contarFilhos(no.getDireita());
     }
 }

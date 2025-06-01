@@ -23,4 +23,9 @@ public class ArvoreBinaria<T> extends ArvoreBinariaAbstract<T>{
 
         return buscar(no.getDireita(), info);
     }
+
+    @Override
+    public void setRaiz(NoArvoreBinaria<T> raiz) {
+        super.setRaiz(raiz);
+    }
 }
