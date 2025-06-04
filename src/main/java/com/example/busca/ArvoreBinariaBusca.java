@@ -2,7 +2,30 @@ package com.example.busca;
 
 public class ArvoreBinariaBusca<T extends Comparable<T>> extends ArvoreBinariaAbstract<T> {
     public void inserir(T valor){
+        NoArvoreBinaria<T> novo = new NoArvoreBinaria<>(valor);
+        if(estaVazia()){
+            setRaiz(novo);
+        }else{
+            NoArvoreBinaria<T> p = getRaiz();
+            NoArvoreBinaria<T> pai;
 
+            while(true){
+                pai = p;
+                if(valor.compareTo(p.getInfo()) < 0){
+                    p = p.getEsquerda();
+                    if(p == null){
+                        pai.setEsquerda(novo);
+                        return;
+                    }
+                }else if(valor.compareTo(p.getInfo()) > 0){
+                    p = p.getDireita();
+                    if(p == null){
+                        pai.setDireita(novo);
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -79,8 +102,7 @@ public class ArvoreBinariaBusca<T extends Comparable<T>> extends ArvoreBinariaAb
         }
 
         if (p != null) { // achou dado a ser removido?
-            if ((p.getEsquerda() == null) && (p.getDireita() == null)) {
-                // 1.o caso - Nó folha
+            if ((p.getEsquerda() == null) && (p.getDireita() == null)) {// 1.o caso - Nó folha
                 if (p == getRaiz()) {
                     setRaiz(null);
                 } else {
@@ -90,9 +112,8 @@ public class ArvoreBinariaBusca<T extends Comparable<T>> extends ArvoreBinariaAb
                         pai.setDireita(null);
                 }
 
-            } else {
-                if (p.getDireita() == null) {
-                    // nó com apenas um filho a esquerda 2.o caso
+            } else {// 2.o caso
+                if (p.getDireita() == null) {// nó com apenas um filho a esquerda 2.o caso
                     if (p == getRaiz()) {
                         setRaiz(p.getEsquerda());
                     } else {
@@ -102,8 +123,7 @@ public class ArvoreBinariaBusca<T extends Comparable<T>> extends ArvoreBinariaAb
                             pai.setDireita(p.getEsquerda());
                     }
                 } else {
-                    if (p.getEsquerda() == null) {
-                        // nó com apenas um flho a direita 2.o caso
+                    if (p.getEsquerda() == null) {// nó com apenas um flho a direita 2.o caso
                         if (p == getRaiz())
                             setRaiz(p.getDireita());
                         else {
@@ -113,8 +133,7 @@ public class ArvoreBinariaBusca<T extends Comparable<T>> extends ArvoreBinariaAb
                                 pai.setDireita(p.getDireita());
                         }
 
-                    } else {
-                        // nó com filho a esquerda e a direita 3.o caso
+                    } else {//3.o caso
                         NoArvoreBinaria<T> sucessor = extrairSucessor(p);
                         if (p == getRaiz())
                             setRaiz(sucessor);

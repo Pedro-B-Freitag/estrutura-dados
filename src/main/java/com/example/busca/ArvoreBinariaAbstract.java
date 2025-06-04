@@ -93,7 +93,7 @@ public abstract class ArvoreBinariaAbstract<T> {
         int idxFimEsquerda = this.buscarIndexFinalEsquerda(idxInicioEsquerda, strValores);
 
         var valorStr = strValores.substring(0, idxInicioEsquerda);
-        Integer valor = Integer.parseInt(valorStr); // infelizmente é obrigatório usar integer
+        Integer valor = Integer.parseInt(valorStr); 
 
         var no = new NoArvoreBinaria<T>();
         no.setInfo((T) valor);

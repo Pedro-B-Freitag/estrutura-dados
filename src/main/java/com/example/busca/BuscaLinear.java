@@ -2,10 +2,10 @@ package com.example.busca;
 
 public class BuscaLinear<T> extends BuscaAbstract{
     public int buscar(T valor){
-        T vetor[] = (T[])this.getInfo();
+        Object[] info = this.getInfo();
 
-        for(int i = 0; i < vetor.length; i++){
-            if(valor.equals(vetor[i])){
+        for(int i = 0; i < info.length; i++){
+            if(valor.equals(info[i])){
                 return i;
             }
         }
