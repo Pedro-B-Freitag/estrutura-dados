@@ -44,7 +44,7 @@ public class MapaDispersao <T>{
                 contador++;
             }
         }
-        return  contador % info.length;
+        return  (double) contador / info.length;
     }
 
     public void retirar(int chave) {
